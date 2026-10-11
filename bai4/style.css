@@ -1,0 +1,181 @@
+/* ===== Reset & biến cơ bản ===== */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+:root {
+	--text: #222;
+	--muted: #666;
+	--accent: #2b5d8a;
+	--border: #ddd;
+	--bg-soft: #f5f5f5;
+	--gap: 1.25rem;
+}
+
+body {
+	margin: 0;
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+	line-height: 1.6;
+	color: var(--text);
+	background: #fff;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--accent); }
+h1, h2, h3 { line-height: 1.25; margin: 0 0 .5em; }
+h1 { font-size: 1.9rem; }
+h2 { font-size: 1.4rem; padding-bottom: .3em; border-bottom: 2px solid var(--border); }
+h3 { font-size: 1.1rem; }
+p { margin: 0 0 1em; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+/* ===== Header & điều hướng ===== */
+.site-header {
+	padding: 1rem var(--gap);
+	border-bottom: 1px solid var(--border);
+	background: var(--bg-soft);
+}
+.site-name {
+	font-size: 1.5rem;
+	font-weight: 700;
+	text-decoration: none;
+	color: var(--text);
+}
+.tagline { margin: 0 0 .75rem; color: var(--muted); }
+
+.main-nav ul { display: flex; flex-wrap: wrap; gap: .25rem 1rem; }
+.main-nav a {
+	display: block;
+	padding: .35rem 0;
+	text-decoration: none;
+	font-weight: 600;
+}
+.main-nav a:hover,
+.main-nav a:focus { text-decoration: underline; }
+
+/* ===== Bố cục chính: 1 cột trên mobile, 2 cột trên màn hình rộng ===== */
+.layout {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: var(--gap);
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2rem;
+}
+main section,
+main article { margin-bottom: 2rem; }
+
+figure { margin: 0 0 1rem; }
+figcaption { font-size: .875rem; color: var(--muted); margin-top: .35rem; }
+
+/* ===== Giá trị cốt lõi: lưới thẻ ===== */
+.value-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: 1rem;
+}
+.value-card {
+	padding: 1rem;
+	border: 1px solid var(--border);
+	border-radius: 6px;
+	background: var(--bg-soft);
+}
+.value-card p { margin: 0; }
+
+/* ===== Đội ngũ ===== */
+.team-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: 1rem;
+}
+.member { text-align: center; }
+.member img {
+	width: 100%;
+	max-width: 160px;
+	aspect-ratio: 78 / 48;
+	object-fit: cover;
+	margin: 0 auto .5rem;
+	border-radius: 4px;
+}
+.member h3 { margin-bottom: .15em; }
+.member p { margin: 0; color: var(--muted); font-size: .9rem; }
+
+/* ===== Form liên hệ ===== */
+.contact-form { max-width: 480px; }
+.contact-form label { font-weight: 600; }
+.contact-form input,
+.contact-form textarea {
+	width: 100%;
+	margin-top: .25rem;
+	padding: .55rem .65rem;
+	font: inherit;
+	border: 1px solid #bbb;
+	border-radius: 4px;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+	outline: 2px solid var(--accent);
+	outline-offset: 1px;
+}
+.contact-form textarea { resize: vertical; }
+.contact-form button {
+	padding: .6rem 1.25rem;
+	font: inherit;
+	font-weight: 600;
+	color: #fff;
+	background: var(--accent);
+	border: 0;
+	border-radius: 4px;
+	cursor: pointer;
+}
+.contact-form button:hover,
+.contact-form button:focus { background: #1f4568; }
+
+/* ===== Sidebar ===== */
+.sidebar {
+	padding: 1rem;
+	background: var(--bg-soft);
+	border: 1px solid var(--border);
+	border-radius: 6px;
+	align-self: start;
+}
+.sidebar h2 { font-size: 1.15rem; }
+.recent li { padding: .4rem 0; border-bottom: 1px solid var(--border); }
+.recent li:last-child { border-bottom: 0; }
+.sidebar p { margin: 1rem 0 0; }
+
+/* ===== Footer ===== */
+.site-footer {
+	padding: 1.5rem var(--gap);
+	background: #2a2a2a;
+	color: #ddd;
+}
+.site-footer a { color: #fff; }
+.footer-cols {
+	max-width: 1000px;
+	margin: 0 auto 1rem;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1rem;
+}
+.footer-cols h3 { color: #fff; margin-bottom: .25em; }
+.footer-cols p { margin: 0; font-size: .9rem; }
+.copyright {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding-top: 1rem;
+	border-top: 1px solid #555;
+	text-align: center;
+	color: #aaa;
+}
+
+/* ===== Tablet: footer 2 cột ===== */
+@media (min-width: 600px) {
+	.footer-cols { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ===== Desktop: nội dung + sidebar, footer 4 cột ===== */
+@media (min-width: 850px) {
+	.layout { grid-template-columns: 1fr 260px; }
+	.footer-cols { grid-template-columns: repeat(4, 1fr); }
+}
